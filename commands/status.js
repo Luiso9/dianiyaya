@@ -1,10 +1,10 @@
 const axios = require('axios');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
-// Cache response
+// Cache object
 let cachedData = null;
 let lastFetched = 0;
-const CACHE_DURATION = 60000;
+const CACHE_DURATION = 60000; // 60 seconds
 
 module.exports = {
     data: {
@@ -16,7 +16,7 @@ module.exports = {
         const apiUrl = 'https://api.mcsrvstat.us/3/147.185.221.21:34650';
 
         try {
-            // Check cache
+            // Cache Validation
             const now = Date.now();
             if (cachedData && now - lastFetched < CACHE_DURATION) {
                 console.log('Using cached server status.');
@@ -33,7 +33,6 @@ module.exports = {
                 return interaction.reply('The Minecraft server is currently offline.');
             }
 
-            // Extract relevant data
             const motd = serverData.motd.clean.join('\n');
             const playersOnline = serverData.players.online;
             const maxPlayers = serverData.players.max;
@@ -41,8 +40,8 @@ module.exports = {
             const ip = serverData.ip;
             const port = serverData.port;
 
-            // Embed the message
-            const embed = new MessageEmbed()
+            // Build an embed message
+            const embed = new EmbedBuilder()
                 .setColor('#00FF00') // Green for online
                 .setTitle('Minecraft Server Status')
                 .setDescription('Here are the details of the Minecraft server:')
