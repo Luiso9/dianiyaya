@@ -2,15 +2,16 @@ const { Client, GatewayIntentBits, REST, Routes, Collection } = require('discord
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config(); // Load environment variables
 
 const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
 });
 
-const token = 'BOTTOKEN';
-const clientId = 'CLIENTID';
-const guildId = 'GUILDID';
-const authorizedRoleId = 'ROLEID';
+const token = process.env.TOKEN; // Use environment variables
+const clientId = process.env.CLIENT_ID;
+const guildId = process.env.GUILD_ID;
+const authorizedRoleId = process.env.AUTHORIZED_ROLE_ID;
 
 client.commands = new Collection();
 const commandCooldowns = new Map();
