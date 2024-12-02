@@ -10,9 +10,10 @@ pids
 *.pid
 *.seed
 *.pid.lock
+bot.sh
 
 # Dependency directories
-node_modules/
+node_modules
 
 # Environment variables
 .env
