@@ -95,6 +95,5 @@ A feature-rich Discord bot built with [Discord.js](https://discord.js.org) for m
 
 Feel free to fork the project and submit pull requests. Suggestions and feedback are welcome!
 
-```
 
 ---
